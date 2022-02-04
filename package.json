@@ -1,7 +1,7 @@
 {
-  "name": "camunda-bpmn-moddle",
+  "name": "activiti-bpmn-moddle",
   "version": "6.1.1",
-  "description": "Camunda moddle extensions for BPMN 2.0",
+  "description": "Activiti moddle extensions for BPMN 2.0",
   "scripts": {
     "all": "run-s lint test",
     "lint": "eslint .",
@@ -12,13 +12,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/camunda/camunda-bpmn-moddle"
+    "url": "https://github.com/activiti/activiti-bpmn-moddle"
   },
   "keywords": [
     "bpmn",
     "moddle",
     "bpmn20",
-    "camunda",
+    "activiti",
     "meta-model"
   ],
   "author": {

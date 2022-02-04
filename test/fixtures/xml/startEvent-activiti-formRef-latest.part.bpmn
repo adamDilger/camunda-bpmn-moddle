@@ -1,0 +1,4 @@
+<bpmn:startEvent
+  activiti:formRef="formId"
+  activiti:formRefBinding="latest">
+</bpmn:startEvent>

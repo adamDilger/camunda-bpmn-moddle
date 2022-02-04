@@ -1,0 +1,4 @@
+<bpmn:userTask
+  activiti:formRef="formId"
+  activiti:formRefBinding="latest">
+</bpmn:userTask>

@@ -21,12 +21,12 @@ describe('read', function() {
     }
 
 
-    describe('camunda:historyTimeToLive', function() {
+    describe('activiti:historyTimeToLive', function() {
 
       it('on Process', async function() {
 
         // given
-        var file = 'process-camunda-historyTimeToLive.part.bpmn';
+        var file = 'process-activiti-historyTimeToLive.part.bpmn';
 
         // when
         var { rootElement: process } = await fromFile(file, 'bpmn:Process');
@@ -41,12 +41,12 @@ describe('read', function() {
     });
 
 
-    describe('camunda:isStartableInTasklist', function() {
+    describe('activiti:isStartableInTasklist', function() {
 
       it('on Process', async function() {
 
         // given
-        var file = 'process-camunda-isStartableInTasklist.part.bpmn';
+        var file = 'process-activiti-isStartableInTasklist.part.bpmn';
 
         // when
         var { rootElement: process } = await fromFile(file, 'bpmn:Process');
@@ -65,18 +65,18 @@ describe('read', function() {
         var bo = moddle.create('bpmn:Process');
 
         // then
-        expect(bo.get('camunda:isStartableInTasklist')).to.be.true;
+        expect(bo.get('activiti:isStartableInTasklist')).to.be.true;
       });
 
     });
 
 
-    describe('camunda:priority', function() {
+    describe('activiti:priority', function() {
 
       it('on UserTask', async function() {
 
         // given
-        var file = 'userTask-camunda-priority.part.bpmn';
+        var file = 'userTask-activiti-priority.part.bpmn';
 
         // when
         var { rootElement: userTask } = await fromFile(file, 'bpmn:UserTask');
@@ -91,12 +91,12 @@ describe('read', function() {
     });
 
 
-    describe('camunda:async', function() {
+    describe('activiti:async', function() {
 
       it('on ServiceTask', async function() {
 
         // given
-        var file = 'serviceTask-camunda-async.part.bpmn';
+        var file = 'serviceTask-activiti-async.part.bpmn';
 
         // when
         var { rootElement: serviceTask } = await fromFile(file, 'bpmn:ServiceTask');
@@ -112,7 +112,7 @@ describe('read', function() {
       it('on SignalEventDefinition', async function() {
 
         // given
-        var file = 'signalEventDefinition-camunda-async.part.bpmn';
+        var file = 'signalEventDefinition-activiti-async.part.bpmn';
 
         // when
         var { rootElement: signalEventDefinition } = await fromFile(file, 'bpmn:SignalEventDefinition');
@@ -127,12 +127,12 @@ describe('read', function() {
     });
 
 
-    describe('camunda:errorEventDefinition', function() {
+    describe('activiti:errorEventDefinition', function() {
 
       it('on ServiceTask', async function() {
 
         // given
-        var file = 'serviceTask-camunda-errorEventDefinition.part.bpmn';
+        var file = 'serviceTask-activiti-errorEventDefinition.part.bpmn';
 
         // when
         var { rootElement: serviceTask } = await fromFile(file, 'bpmn:ServiceTask');
@@ -144,7 +144,7 @@ describe('read', function() {
             $type: 'bpmn:ExtensionElements',
             values: [
               {
-                $type: 'camunda:ErrorEventDefinition',
+                $type: 'activiti:ErrorEventDefinition',
                 id: 'Id_1',
                 expression: '${true}'
               },
@@ -157,12 +157,12 @@ describe('read', function() {
     });
 
 
-    describe('camunda:errorCodeVariable', function() {
+    describe('activiti:errorCodeVariable', function() {
 
       it('on ErrorEventDefinition', async function() {
 
         // given
-        var file = 'errorEventDefinition-camunda-errorCodeVariable.part.bpmn';
+        var file = 'errorEventDefinition-activiti-errorCodeVariable.part.bpmn';
 
         // when
         var { rootElement: errorEventDefinition } = await fromFile(file, 'bpmn:ErrorEventDefinition');
@@ -177,12 +177,12 @@ describe('read', function() {
     });
 
 
-    describe('camunda:escalationCodeVariable', function() {
+    describe('activiti:escalationCodeVariable', function() {
 
       it('on EscalationEventDefinition', async function() {
 
         // given
-        var file = 'escalationEventDefinition-camunda-escalationCodeVariable.part.bpmn';
+        var file = 'escalationEventDefinition-activiti-escalationCodeVariable.part.bpmn';
 
         // when
         var { rootElement: escalationEventDefinition } = await fromFile(file, 'bpmn:EscalationEventDefinition');
@@ -197,12 +197,12 @@ describe('read', function() {
     });
 
 
-    describe('camunda:errorMessage', function() {
+    describe('activiti:errorMessage', function() {
 
       it('on Error', async function() {
 
         // given
-        var file = 'camunda-errorMessage.part.bpmn';
+        var file = 'activiti-errorMessage.part.bpmn';
 
         // when
         var { rootElement: error } = await fromFile(file, 'bpmn:Error');
@@ -217,17 +217,17 @@ describe('read', function() {
     });
 
 
-    it('camunda:script', async function() {
+    it('activiti:script', async function() {
 
       // given
-      var file = 'camunda-script.part.bpmn';
+      var file = 'activiti-script.part.bpmn';
 
       // when
-      var { rootElement: script } = await fromFile(file, 'camunda:Script');
+      var { rootElement: script } = await fromFile(file, 'activiti:Script');
 
       // then
       expect(script).to.jsonEqual({
-        $type: 'camunda:Script',
+        $type: 'activiti:Script',
         scriptFormat: 'groovy',
         resource: 'null',
         value: 'foo = bar;'
@@ -235,29 +235,29 @@ describe('read', function() {
     });
 
 
-    it('camunda:connector', async function() {
+    it('activiti:connector', async function() {
 
       // given
-      var file = 'camunda-connector.part.bpmn';
+      var file = 'activiti-connector.part.bpmn';
 
       // when
-      var { rootElement: connector } = await fromFile(file, 'camunda:Connector');
+      var { rootElement: connector } = await fromFile(file, 'activiti:Connector');
 
       // then
       expect(connector).to.jsonEqual({
-        $type: 'camunda:Connector',
+        $type: 'activiti:Connector',
         connectorId: 'connector',
         inputOutput: {
-          $type: 'camunda:InputOutput',
+          $type: 'activiti:InputOutput',
           inputParameters: [
             {
-              $type: 'camunda:InputParameter',
+              $type: 'activiti:InputParameter',
               name: 'in'
             }
           ],
           outputParameters: [
             {
-              $type: 'camunda:OutputParameter',
+              $type: 'activiti:OutputParameter',
               name: 'out'
             }
           ]
@@ -266,20 +266,20 @@ describe('read', function() {
     });
 
 
-    it('camunda:properties', async function() {
+    it('activiti:properties', async function() {
 
       // given
-      var file = 'camunda-properties.part.bpmn';
+      var file = 'activiti-properties.part.bpmn';
 
       // when
-      var { rootElement: properties } = await fromFile(file, 'camunda:Properties');
+      var { rootElement: properties } = await fromFile(file, 'activiti:Properties');
 
       // then
       expect(properties).to.jsonEqual({
-        $type: 'camunda:Properties',
+        $type: 'activiti:Properties',
         values: [
           {
-            $type: 'camunda:Property',
+            $type: 'activiti:Property',
             id: 'p1',
             name: 'foo',
             value: 'property1'
@@ -289,7 +289,7 @@ describe('read', function() {
     });
 
 
-    describe('camunda:diagramRelationId', function() {
+    describe('activiti:diagramRelationId', function() {
 
       it('on Definitions', async function() {
 
@@ -309,17 +309,17 @@ describe('read', function() {
     });
 
 
-    it('camunda:potentialStarter', async function() {
+    it('activiti:potentialStarter', async function() {
 
       // given
-      var file = 'camunda-potentialStarter.part.bpmn';
+      var file = 'activiti-potentialStarter.part.bpmn';
 
       // when
-      var { rootElement: starter } = await fromFile(file, 'camunda:PotentialStarter');
+      var { rootElement: starter } = await fromFile(file, 'activiti:PotentialStarter');
 
       // then
       expect(starter).to.jsonEqual({
-        $type: 'camunda:PotentialStarter',
+        $type: 'activiti:PotentialStarter',
         resourceAssignmentExpression: {
           $type: 'bpmn:ResourceAssignmentExpression',
           expression: {
@@ -331,7 +331,7 @@ describe('read', function() {
     });
 
 
-    describe('camunda:resource', function() {
+    describe('activiti:resource', function() {
 
       it('on FormalExpression', async function() {
 
@@ -351,17 +351,17 @@ describe('read', function() {
     });
 
 
-    it('camunda:in', async function() {
+    it('activiti:in', async function() {
 
       // given
-      var file = 'camunda-in.part.bpmn';
+      var file = 'activiti-in.part.bpmn';
 
       // when
-      var { rootElement: binding } = await fromFile(file, 'camunda:In');
+      var { rootElement: binding } = await fromFile(file, 'activiti:In');
 
       // then
       expect(binding).to.jsonEqual({
-        $type: 'camunda:In',
+        $type: 'activiti:In',
         sourceExpression: 'fooExp',
         source: 'foo',
         target: 'bar',
@@ -371,17 +371,17 @@ describe('read', function() {
     });
 
 
-    it('camunda:out', async function() {
+    it('activiti:out', async function() {
 
       // given
-      var file = 'camunda-out.part.bpmn';
+      var file = 'activiti-out.part.bpmn';
 
       // when
-      var { rootElement: binding } = await fromFile(file, 'camunda:Out');
+      var { rootElement: binding } = await fromFile(file, 'activiti:Out');
 
       // then
       expect(binding).to.jsonEqual({
-        $type: 'camunda:Out',
+        $type: 'activiti:Out',
         sourceExpression: 'fooExp',
         source: 'foo',
         target: 'bar',
@@ -391,19 +391,19 @@ describe('read', function() {
     });
 
 
-    describe('camunda:inputParameter', function() {
+    describe('activiti:inputParameter', function() {
 
       it('with body content', async function() {
 
         // given
-        var file = 'camunda-inputParameter-body.part.bpmn';
+        var file = 'activiti-inputParameter-body.part.bpmn';
 
         // when
-        var { rootElement: parameter } = await fromFile(file, 'camunda:InputParameter');
+        var { rootElement: parameter } = await fromFile(file, 'activiti:InputParameter');
 
         // then
         expect(parameter).to.jsonEqual({
-          $type: 'camunda:InputParameter',
+          $type: 'activiti:InputParameter',
           name: 'foo',
           value: 'BAR'
         });
@@ -413,16 +413,16 @@ describe('read', function() {
       it('with nested script', async function() {
 
         // given
-        var file = 'camunda-inputParameter-script.part.bpmn';
+        var file = 'activiti-inputParameter-script.part.bpmn';
 
         // when
-        var { rootElement: parameter } = await fromFile(file, 'camunda:InputParameter');
+        var { rootElement: parameter } = await fromFile(file, 'activiti:InputParameter');
 
         // then
         expect(parameter).to.jsonEqual({
-          $type: 'camunda:InputParameter',
+          $type: 'activiti:InputParameter',
           definition: {
-            $type: 'camunda:Script'
+            $type: 'activiti:Script'
           }
         });
       });
@@ -431,28 +431,28 @@ describe('read', function() {
       it('with nested list', async function() {
 
         // given
-        var file = 'camunda-inputParameter-list.part.bpmn';
+        var file = 'activiti-inputParameter-list.part.bpmn';
 
         // when
-        var { rootElement: parameter } = await fromFile(file, 'camunda:InputParameter');
+        var { rootElement: parameter } = await fromFile(file, 'activiti:InputParameter');
 
         // then
         expect(parameter).to.jsonEqual({
-          $type: 'camunda:InputParameter',
+          $type: 'activiti:InputParameter',
           name: 'var1',
           definition: {
-            $type: 'camunda:List',
+            $type: 'activiti:List',
             items: [
               {
-                $type: 'camunda:Value',
+                $type: 'activiti:Value',
                 value: '${1+1}'
               },
               {
-                $type: 'camunda:Value',
+                $type: 'activiti:Value',
                 value: '${1+2}'
               },
               {
-                $type: 'camunda:Value',
+                $type: 'activiti:Value',
                 value: '${1+3}'
               }
             ]
@@ -464,29 +464,29 @@ describe('read', function() {
       it('with nested map', async function() {
 
         // given
-        var file = 'camunda-inputParameter-map.part.bpmn';
+        var file = 'activiti-inputParameter-map.part.bpmn';
 
         // when
-        var { rootElement: parameter } = await fromFile(file, 'camunda:InputParameter');
+        var { rootElement: parameter } = await fromFile(file, 'activiti:InputParameter');
 
         // then
         expect(parameter).to.jsonEqual({
-          $type: 'camunda:InputParameter',
+          $type: 'activiti:InputParameter',
           definition: {
-            $type: 'camunda:Map',
+            $type: 'activiti:Map',
             entries: [
               {
-                $type: 'camunda:Entry',
+                $type: 'activiti:Entry',
                 key: 'a',
                 value: '${1+1}'
               },
               {
-                $type: 'camunda:Entry',
+                $type: 'activiti:Entry',
                 key: 'b',
                 value: '${1+2}'
               },
               {
-                $type: 'camunda:Entry',
+                $type: 'activiti:Entry',
                 key: 'c',
                 value: '${1+3}'
               }
@@ -498,33 +498,33 @@ describe('read', function() {
     });
 
 
-    describe('camunda:outputParameter', function() {
+    describe('activiti:outputParameter', function() {
 
       it('with mixed contents', async function() {
 
         // given
-        var file = 'camunda-outputParameter-mixed.part.bpmn';
+        var file = 'activiti-outputParameter-mixed.part.bpmn';
 
         // when
-        var { rootElement: parameter } = await fromFile(file, 'camunda:OutputParameter');
+        var { rootElement: parameter } = await fromFile(file, 'activiti:OutputParameter');
 
         // then
         expect(parameter).to.jsonEqual({
-          $type: 'camunda:OutputParameter',
+          $type: 'activiti:OutputParameter',
           name: 'var1',
           definition: {
-            $type: 'camunda:List',
+            $type: 'activiti:List',
             items: [
               {
-                $type: 'camunda:Value',
+                $type: 'activiti:Value',
                 value: 'constantStringValue'
               },
               {
-                $type: 'camunda:Value',
+                $type: 'activiti:Value',
                 value: '${ \'elValue\' }'
               },
               {
-                $type: 'camunda:Script',
+                $type: 'activiti:Script',
                 scriptFormat: 'Groovy',
                 value: 'return "scriptValue";'
               }
@@ -536,14 +536,14 @@ describe('read', function() {
     });
 
 
-    describe('camunda:TemplateSupported', function() {
+    describe('activiti:TemplateSupported', function() {
 
-      describe('camunda:modelerTemplate', function() {
+      describe('activiti:modelerTemplate', function() {
 
         it('on Process', async function() {
 
           // given
-          var file = 'process-camunda-modelerTemplate.part.bpmn';
+          var file = 'process-activiti-modelerTemplate.part.bpmn';
 
           // when
           var { rootElement: process } = await fromFile(file, 'bpmn:Process');
@@ -559,7 +559,7 @@ describe('read', function() {
         it('on Collaboration', async function() {
 
           // given
-          var file = 'collaboration-camunda-modelerTemplate.part.bpmn';
+          var file = 'collaboration-activiti-modelerTemplate.part.bpmn';
 
           // when
           var { rootElement: collaboration } = await fromFile(file, 'bpmn:Collaboration');
@@ -575,7 +575,7 @@ describe('read', function() {
         it('on Task', async function() {
 
           // given
-          var file = 'task-camunda-modelerTemplate.part.bpmn';
+          var file = 'task-activiti-modelerTemplate.part.bpmn';
 
           // when
           var { rootElement: task } = await fromFile(file, 'bpmn:Task');
@@ -591,7 +591,7 @@ describe('read', function() {
         it('on StartEvent', async function() {
 
           // given
-          var file = 'startEvent-camunda-modelerTemplate.part.bpmn';
+          var file = 'startEvent-activiti-modelerTemplate.part.bpmn';
 
           // when
           var { rootElement: startEvent } = await fromFile(file, 'bpmn:StartEvent');
@@ -606,12 +606,12 @@ describe('read', function() {
       });
 
 
-      describe('camunda:modelerTemplateVersion', function() {
+      describe('activiti:modelerTemplateVersion', function() {
 
         it('on Process', async function() {
 
           // given
-          var file = 'process-camunda-modelerTemplateVersion.part.bpmn';
+          var file = 'process-activiti-modelerTemplateVersion.part.bpmn';
 
           // when
           var { rootElement: process } = await fromFile(file, 'bpmn:Process');
@@ -628,7 +628,7 @@ describe('read', function() {
         it('on Collaboration', async function() {
 
           // given
-          var file = 'collaboration-camunda-modelerTemplateVersion.part.bpmn';
+          var file = 'collaboration-activiti-modelerTemplateVersion.part.bpmn';
 
           // when
           var { rootElement: collaboration } = await fromFile(file, 'bpmn:Collaboration');
@@ -645,7 +645,7 @@ describe('read', function() {
         it('on Task', async function() {
 
           // given
-          var file = 'task-camunda-modelerTemplateVersion.part.bpmn';
+          var file = 'task-activiti-modelerTemplateVersion.part.bpmn';
 
           // when
           var { rootElement: task } = await fromFile(file, 'bpmn:Task');
@@ -662,7 +662,7 @@ describe('read', function() {
         it('on StartEvent', async function() {
 
           // given
-          var file = 'startEvent-camunda-modelerTemplateVersion.part.bpmn';
+          var file = 'startEvent-activiti-modelerTemplateVersion.part.bpmn';
 
           // when
           var { rootElement: startEvent } = await fromFile(file, 'bpmn:StartEvent');
@@ -680,12 +680,12 @@ describe('read', function() {
     });
 
 
-    describe('camunda:initiator', function() {
+    describe('activiti:initiator', function() {
 
       it('on StartEvent', async function() {
 
         // given
-        var file = 'startEvent-camunda-initiator.part.bpmn';
+        var file = 'startEvent-activiti-initiator.part.bpmn';
 
         // when
         var { rootElement: startEvent } = await fromFile(file, 'bpmn:StartEvent');
@@ -719,18 +719,18 @@ describe('read', function() {
         caseBinding: 'version',
         caseVersion: '2',
         caseTenantId: 'tenant1',
-        variableMappingClass: 'org.camunda.bpm.test.Test',
+        variableMappingClass: 'org.activiti.bpm.test.Test',
         variableMappingDelegateExpression: '${test}'
       });
     });
 
 
-    describe('camunda:taskPriority', function() {
+    describe('activiti:taskPriority', function() {
 
       it('on Process', async function() {
 
         // given
-        var file = 'process-camunda-taskPriority.part.bpmn';
+        var file = 'process-activiti-taskPriority.part.bpmn';
 
         // when
         var { rootElement: process } = await fromFile(file, 'bpmn:Process');
@@ -746,7 +746,7 @@ describe('read', function() {
       it('on ServiceTaskLike Element', async function() {
 
         // given
-        var file = 'serviceTask-camunda-taskPriority.part.bpmn';
+        var file = 'serviceTask-activiti-taskPriority.part.bpmn';
 
         // when
         var { rootElement: task } = await fromFile(file, 'bpmn:ServiceTask');
@@ -761,12 +761,12 @@ describe('read', function() {
     });
 
 
-    describe('camunda:jobPriority', function() {
+    describe('activiti:jobPriority', function() {
 
       it('on Process', async function() {
 
         // given
-        var file = 'process-camunda-jobPriority.part.bpmn';
+        var file = 'process-activiti-jobPriority.part.bpmn';
 
         // when
         var { rootElement: process } = await fromFile(file, 'bpmn:Process');
@@ -782,7 +782,7 @@ describe('read', function() {
       it('on ServiceTask', async function() {
 
         // given
-        var file = 'serviceTask-camunda-jobPriority.part.bpmn';
+        var file = 'serviceTask-activiti-jobPriority.part.bpmn';
 
         // when
         var { rootElement: serviceTask } = await fromFile(file, 'bpmn:ServiceTask');
@@ -798,7 +798,7 @@ describe('read', function() {
       it('on Gateway', async function() {
 
         // given
-        var file = 'gateway-camunda-jobPriority.part.bpmn';
+        var file = 'gateway-activiti-jobPriority.part.bpmn';
 
         // when
         var { rootElement: gateway } = await fromFile(file, 'bpmn:ExclusiveGateway');
@@ -814,7 +814,7 @@ describe('read', function() {
       it('on Event', async function() {
 
         // given
-        var file = 'event-camunda-jobPriority.part.bpmn';
+        var file = 'event-activiti-jobPriority.part.bpmn';
 
         // when
         var { rootElement: catchEvent } = await fromFile(file, 'bpmn:IntermediateCatchEvent');
@@ -831,7 +831,7 @@ describe('read', function() {
 
     describe('bpmn:Process', function() {
 
-      it('extended with camunda:candidateStarterUsers, camunda:candidateStarterGroups, camunda:versionTag', async function() {
+      it('extended with activiti:candidateStarterUsers, activiti:candidateStarterGroups, activiti:versionTag', async function() {
 
         // given
         var file = 'process.part.bpmn';
@@ -853,7 +853,7 @@ describe('read', function() {
 
     describe('bpmn:ScriptTask', function() {
 
-      it('extended with camunda:resource, camunda:resultVariable', async function() {
+      it('extended with activiti:resource, activiti:resultVariable', async function() {
 
         // given
         var file = 'scriptTask.part.bpmn';
@@ -873,19 +873,19 @@ describe('read', function() {
     });
 
 
-    describe('camunda:executionListener', function() {
+    describe('activiti:executionListener', function() {
 
       it('attributes', async function() {
 
         // given
-        var file = 'camunda-executionListener.part.bpmn';
+        var file = 'activiti-executionListener.part.bpmn';
 
         // when
-        var { rootElement: executionListener } = await fromFile(file, 'camunda:ExecutionListener');
+        var { rootElement: executionListener } = await fromFile(file, 'activiti:ExecutionListener');
 
         // then
         expect(executionListener).to.jsonEqual({
-          $type: 'camunda:ExecutionListener',
+          $type: 'activiti:ExecutionListener',
           event: 'start',
           'class': 'my.company.Listener'
         });
@@ -895,17 +895,17 @@ describe('read', function() {
       it('script', async function() {
 
         // given
-        var file = 'camunda-executionListener-script.part.bpmn';
+        var file = 'activiti-executionListener-script.part.bpmn';
 
         // when
-        var { rootElement: executionListener } = await fromFile(file, 'camunda:ExecutionListener');
+        var { rootElement: executionListener } = await fromFile(file, 'activiti:ExecutionListener');
 
         // then
         expect(executionListener).to.jsonEqual({
-          $type: 'camunda:ExecutionListener',
+          $type: 'activiti:ExecutionListener',
           event: 'start',
           script: {
-            $type: 'camunda:Script',
+            $type: 'activiti:Script',
             scriptFormat: 'groovy',
             value: 'foo = bar;'
           }
@@ -916,24 +916,24 @@ describe('read', function() {
       it('fields', async function() {
 
         // given
-        var file = 'camunda-executionListener-fields.part.bpmn';
+        var file = 'activiti-executionListener-fields.part.bpmn';
 
         // when
-        var { rootElement: executionListener } = await fromFile(file, 'camunda:ExecutionListener');
+        var { rootElement: executionListener } = await fromFile(file, 'activiti:ExecutionListener');
 
         // then
         expect(executionListener).to.jsonEqual({
-          $type: 'camunda:ExecutionListener',
+          $type: 'activiti:ExecutionListener',
           event: 'start',
           'class': 'my.company.Listener',
           fields : [
             {
-              $type: 'camunda:Field',
+              $type: 'activiti:Field',
               name: 'fieldOne',
               stringValue: 'myString'
             },
             {
-              $type: 'camunda:Field',
+              $type: 'activiti:Field',
               name: 'fieldTwo',
               expression: '${myExpression}'
             }
@@ -944,21 +944,21 @@ describe('read', function() {
     });
 
 
-    describe('camunda:taskListener', function() {
+    describe('activiti:taskListener', function() {
 
       it('create event', async function() {
 
         // given
-        var file = 'camunda-taskListener.part.bpmn';
+        var file = 'activiti-taskListener.part.bpmn';
 
         // when
-        var { rootElement: taskListener } = await fromFile(file, 'camunda:TaskListener');
+        var { rootElement: taskListener } = await fromFile(file, 'activiti:TaskListener');
 
         // then
         expect(taskListener).to.jsonEqual({
-          $type: 'camunda:TaskListener',
+          $type: 'activiti:TaskListener',
           event: 'create',
-          class: 'org.camunda.bpm.engine.test.bpmn.usertask.UserTaskTestCreateTaskListener',
+          class: 'org.activiti.bpm.engine.test.bpmn.usertask.UserTaskTestCreateTaskListener',
           delegateExpression: '${myTaskListener}',
           expression: '${myTaskListener.notify(task, task.eventName)}'
         });
@@ -968,14 +968,14 @@ describe('read', function() {
       it('timeout event', async function() {
 
         // given
-        var file = 'camunda-timeout-taskListener.part.bpmn';
+        var file = 'activiti-timeout-taskListener.part.bpmn';
 
         // when
-        var { rootElement: taskListener } = await fromFile(file, 'camunda:TaskListener');
+        var { rootElement: taskListener } = await fromFile(file, 'activiti:TaskListener');
 
         // then
         expect(taskListener).to.jsonEqual({
-          $type: 'camunda:TaskListener',
+          $type: 'activiti:TaskListener',
           event: 'timeout',
           id: 'timeout-friendly',
           eventDefinitions: [
@@ -993,19 +993,19 @@ describe('read', function() {
     });
 
 
-    describe('camunda:field', function() {
+    describe('activiti:field', function() {
 
       it('attributes', async function() {
 
         // given
-        var file = 'camunda-field-attributes.part.bpmn';
+        var file = 'activiti-field-attributes.part.bpmn';
 
         // when
-        var { rootElement: field } = await fromFile(file, 'camunda:Field');
+        var { rootElement: field } = await fromFile(file, 'activiti:Field');
 
         // then
         expect(field).to.jsonEqual({
-          $type: 'camunda:Field',
+          $type: 'activiti:Field',
           name: 'html',
           expression: '<html><body>Hi!</body></html>',
           stringValue: '41 is not the answer!'
@@ -1016,14 +1016,14 @@ describe('read', function() {
       it('with nested expression and string', async function() {
 
         // given
-        var file = 'camunda-field-children.part.bpmn';
+        var file = 'activiti-field-children.part.bpmn';
 
         // when
-        var { rootElement: field } = await fromFile(file, 'camunda:Field');
+        var { rootElement: field } = await fromFile(file, 'activiti:Field');
 
         // then
         expect(field).to.jsonEqual({
-          $type: 'camunda:Field',
+          $type: 'activiti:Field',
           name: 'html',
           expression: '<html><body>Hi!</body></html>',
           string: '42 is the answer!'
@@ -1033,12 +1033,12 @@ describe('read', function() {
     });
 
 
-    describe('camunda:Collectable', function() {
+    describe('activiti:Collectable', function() {
 
       it('attributes', async function() {
 
         // given
-        var file = 'camunda-multiInstance.part.bpmn';
+        var file = 'activiti-multiInstance.part.bpmn';
 
         // when
         var { rootElement: field } = await fromFile(file, 'bpmn:MultiInstanceLoopCharacteristics');
@@ -1055,7 +1055,7 @@ describe('read', function() {
     });
 
 
-    describe('camunda tenant id', function() {
+    describe('activiti tenant id', function() {
 
       it('on BusinessRuleTask', async function() {
 
@@ -1095,7 +1095,7 @@ describe('read', function() {
           caseBinding: 'version',
           caseVersion: '2',
           caseTenantId: 'tenant1',
-          variableMappingClass: 'org.camunda.bpm.test.Test',
+          variableMappingClass: 'org.activiti.bpm.test.Test',
           variableMappingDelegateExpression: '${test}'
         });
       });
@@ -1103,12 +1103,12 @@ describe('read', function() {
     });
 
 
-    describe('camunda:errorMessageVariable', function() {
+    describe('activiti:errorMessageVariable', function() {
 
       it('on ErrorEventDefinition', async function() {
 
         // given
-        var file = 'errorEventDefinition-camunda-errorMessageVariable.part.bpmn';
+        var file = 'errorEventDefinition-activiti-errorMessageVariable.part.bpmn';
 
         // when
         var { rootElement: errorEventDefinition } = await fromFile(file, 'bpmn:ErrorEventDefinition');
@@ -1123,12 +1123,12 @@ describe('read', function() {
     });
 
 
-    describe('camunda:variableName', function() {
+    describe('activiti:variableName', function() {
 
       it('on ConditionalEventDefinition', async function() {
 
         // given
-        var file = 'conditionalEventDefinition-camunda-variableName.part.bpmn';
+        var file = 'conditionalEventDefinition-activiti-variableName.part.bpmn';
 
         // when
         var { rootElement: conditionalEventDefinition } = await fromFile(file, 'bpmn:ConditionalEventDefinition');
@@ -1143,12 +1143,12 @@ describe('read', function() {
     });
 
 
-    describe('camunda:variableEvents', function() {
+    describe('activiti:variableEvents', function() {
 
       it('on ConditionalEventDefinition', async function() {
 
         // given
-        var file = 'conditionalEventDefinition-camunda-variableEvents.part.bpmn';
+        var file = 'conditionalEventDefinition-activiti-variableEvents.part.bpmn';
 
         // when
         var { rootElement: conditionalEventDefinition } = await fromFile(file, 'bpmn:ConditionalEventDefinition');
@@ -1165,14 +1165,14 @@ describe('read', function() {
 
     describe('forms', function() {
 
-      describe('embedded/external/Camunda Forms (camunda:formKey)', function() {
+      describe('embedded/external/Activiti Forms (activiti:formKey)', function() {
 
-        describe('camunda:formKey', function() {
+        describe('activiti:formKey', function() {
 
           it('on UserTask', async function() {
 
             // given
-            var file = 'userTask-camunda-formKey.part.bpmn';
+            var file = 'userTask-activiti-formKey.part.bpmn';
 
             // when
             var { rootElement: userTask } = await fromFile(file, 'bpmn:UserTask');
@@ -1188,7 +1188,7 @@ describe('read', function() {
           it('on StartEvent', async function() {
 
             // given
-            var file = 'startEvent-camunda-formKey.part.bpmn';
+            var file = 'startEvent-activiti-formKey.part.bpmn';
 
             // when
             var { rootElement: startEvent } = await fromFile(file, 'bpmn:StartEvent');
@@ -1202,12 +1202,12 @@ describe('read', function() {
 
         });
 
-        describe('camunda:formKey and camunda:formHandlerClass', function() {
+        describe('activiti:formKey and activiti:formHandlerClass', function() {
 
           it('on UserTask', async function() {
 
             // given
-            var file = 'userTask-camunda-formHandlerClass.part.bpmn';
+            var file = 'userTask-activiti-formHandlerClass.part.bpmn';
 
             // when
             var { rootElement: userTask } = await fromFile(file, 'bpmn:UserTask');
@@ -1224,7 +1224,7 @@ describe('read', function() {
           it('on StartEvent', async function() {
 
             // given
-            var file = 'startEvent-camunda-formHandlerClass.part.bpmn';
+            var file = 'startEvent-activiti-formHandlerClass.part.bpmn';
 
             // when
             var { rootElement: startEvent } = await fromFile(file, 'bpmn:StartEvent');
@@ -1242,14 +1242,14 @@ describe('read', function() {
       });
 
 
-      describe('Camunda Forms (camunda:formRef)', function() {
+      describe('Activiti Forms (activiti:formRef)', function() {
 
-        describe('camunda:formRefBinding = latest', function() {
+        describe('activiti:formRefBinding = latest', function() {
 
           it('on UserTask', async function() {
 
             // given
-            var file = 'userTask-camunda-formRef-latest.part.bpmn';
+            var file = 'userTask-activiti-formRef-latest.part.bpmn';
 
             // when
             var { rootElement: userTask } = await fromFile(file, 'bpmn:UserTask');
@@ -1266,7 +1266,7 @@ describe('read', function() {
           it('on StartEvent', async function() {
 
             // given
-            var file = 'startEvent-camunda-formRef-latest.part.bpmn';
+            var file = 'startEvent-activiti-formRef-latest.part.bpmn';
 
             // when
             var { rootElement: startEvent } = await fromFile(file, 'bpmn:StartEvent');
@@ -1282,12 +1282,12 @@ describe('read', function() {
         });
 
 
-        describe('camunda:formRefBinding = version', function() {
+        describe('activiti:formRefBinding = version', function() {
 
           it('on UserTask', async function() {
 
             // given
-            var file = 'userTask-camunda-formRef-version.part.bpmn';
+            var file = 'userTask-activiti-formRef-version.part.bpmn';
 
             // when
             var { rootElement: userTask } = await fromFile(file, 'bpmn:UserTask');
@@ -1305,7 +1305,7 @@ describe('read', function() {
           it('on StartEvent', async function() {
 
             // given
-            var file = 'startEvent-camunda-formRef-version.part.bpmn';
+            var file = 'startEvent-activiti-formRef-version.part.bpmn';
 
             // when
             var { rootElement: startEvent } = await fromFile(file, 'bpmn:StartEvent');
@@ -1324,50 +1324,50 @@ describe('read', function() {
       });
 
 
-      describe('generated (camunda:formData)', function() {
+      describe('generated (activiti:formData)', function() {
 
-        it('camunda:formData', async function() {
+        it('activiti:formData', async function() {
 
           // given
-          var file = 'camunda-formData.part.bpmn';
+          var file = 'activiti-formData.part.bpmn';
 
           // when
-          var { rootElement: formData } = await fromFile(file, 'camunda:FormData');
+          var { rootElement: formData } = await fromFile(file, 'activiti:FormData');
 
           // then
           expect(formData).to.jsonEqual({
-            $type: 'camunda:FormData',
+            $type: 'activiti:FormData',
             fields: [
               {
-                $type: 'camunda:FormField',
+                $type: 'activiti:FormField',
                 id: 'stringField',
                 label: 'String Field',
                 type: 'string',
                 defaultValue: 'someString',
                 properties: {
-                  $type: 'camunda:Properties',
+                  $type: 'activiti:Properties',
                   values: [
                     {
-                      $type: 'camunda:Property',
+                      $type: 'activiti:Property',
                       id: 'p1',
                       value: 'property1'
                     },
                     {
-                      $type: 'camunda:Property',
+                      $type: 'activiti:Property',
                       id: 'p2',
                       value: 'property2'
                     }
                   ]
                 },
                 validation: {
-                  $type: 'camunda:Validation',
+                  $type: 'activiti:Validation',
                   constraints: [
                     {
-                      $type: 'camunda:Constraint',
+                      $type: 'activiti:Constraint',
                       name: 'readonly'
                     },
                     {
-                      $type: 'camunda:Constraint',
+                      $type: 'activiti:Constraint',
                       name: 'minlength',
                       config: '5'
                     }
@@ -1375,12 +1375,12 @@ describe('read', function() {
                 },
                 values: [
                   {
-                    $type: 'camunda:Value',
+                    $type: 'activiti:Value',
                     id: 'a',
                     name: 'A'
                   },
                   {
-                    $type: 'camunda:Value',
+                    $type: 'activiti:Value',
                     id: 'b',
                     name: 'B'
                   }
@@ -1391,19 +1391,19 @@ describe('read', function() {
         });
 
 
-        describe('camunda:formProperty', function() {
+        describe('activiti:formProperty', function() {
 
           it('attributes', async function() {
 
             // given
-            var file = 'camunda-formProperty-attributes.part.bpmn';
+            var file = 'activiti-formProperty-attributes.part.bpmn';
 
             // when
-            var { rootElement: formProperty } = await fromFile(file, 'camunda:FormProperty');
+            var { rootElement: formProperty } = await fromFile(file, 'activiti:FormProperty');
 
             // then
             expect(formProperty).to.jsonEqual({
-              $type: 'camunda:FormProperty',
+              $type: 'activiti:FormProperty',
               id: 'longProperty',
               name: 'Property',
               type: 'long',
@@ -1421,22 +1421,22 @@ describe('read', function() {
           it('with nested value', async function() {
 
             // given
-            var file = 'camunda-formProperty-children.part.bpmn';
+            var file = 'activiti-formProperty-children.part.bpmn';
 
             // when
-            var { rootElement: formProperty } = await fromFile(file, 'camunda:FormProperty');
+            var { rootElement: formProperty } = await fromFile(file, 'activiti:FormProperty');
 
             // then
             expect(formProperty).to.jsonEqual({
-              $type: 'camunda:FormProperty',
+              $type: 'activiti:FormProperty',
               values: [
                 {
-                  $type: 'camunda:Value',
+                  $type: 'activiti:Value',
                   id: 'false',
                   name: 'Yes'
                 },
                 {
-                  $type: 'camunda:Value',
+                  $type: 'activiti:Value',
                   id: 'true',
                   name: 'No'
                 }

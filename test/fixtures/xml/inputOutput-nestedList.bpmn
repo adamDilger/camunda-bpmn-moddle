@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn2:definitions
     xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL"
-    xmlns:camunda="http://camunda.org/schema/1.0/bpmn"
+    xmlns:activiti="http://activiti.org/schema/1.0/bpmn"
     xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
     xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
     xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     id="_FVEpwO_VEeOtYvXzz5ksgw"
-    targetNamespace="http://camunda.org/schema/1.0/bpmn"
-    exporter="camunda modeler"
+    targetNamespace="http://activiti.org/schema/1.0/bpmn"
+    exporter="activiti modeler"
     exporterVersion="2.5.0"
     xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd">
   <bpmn2:process id="testProcess" isExecutable="true">
@@ -17,27 +17,27 @@
     </bpmn2:startEvent>
     <bpmn2:receiveTask id="wait" name="wait">
       <bpmn2:extensionElements>
-        <camunda:inputOutput>
-            <camunda:inputParameter name="var1">
-              <camunda:list>
-                <camunda:value>constantStringValue</camunda:value>
-                <camunda:value>${ 'elValue' }</camunda:value>
-                <camunda:script scriptFormat="Groovy">return "scriptValue";</camunda:script>
-                <camunda:list>
-                  <camunda:list>
-                    <camunda:value>a</camunda:value>
-                    <camunda:value>b</camunda:value>
-                    <camunda:value>c</camunda:value>
-                  </camunda:list>
-                  <camunda:value>d</camunda:value>
-                </camunda:list>
-                <camunda:map>
-                  <camunda:entry key="foo">bar</camunda:entry>
-                  <camunda:entry key="hello">world</camunda:entry>
-                </camunda:map>
-              </camunda:list>
-            </camunda:inputParameter>
-        </camunda:inputOutput>
+        <activiti:inputOutput>
+            <activiti:inputParameter name="var1">
+              <activiti:list>
+                <activiti:value>constantStringValue</activiti:value>
+                <activiti:value>${ 'elValue' }</activiti:value>
+                <activiti:script scriptFormat="Groovy">return "scriptValue";</activiti:script>
+                <activiti:list>
+                  <activiti:list>
+                    <activiti:value>a</activiti:value>
+                    <activiti:value>b</activiti:value>
+                    <activiti:value>c</activiti:value>
+                  </activiti:list>
+                  <activiti:value>d</activiti:value>
+                </activiti:list>
+                <activiti:map>
+                  <activiti:entry key="foo">bar</activiti:entry>
+                  <activiti:entry key="hello">world</activiti:entry>
+                </activiti:map>
+              </activiti:list>
+            </activiti:inputParameter>
+        </activiti:inputOutput>
       </bpmn2:extensionElements>
       <bpmn2:incoming>SequenceFlow_1</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_2</bpmn2:outgoing>

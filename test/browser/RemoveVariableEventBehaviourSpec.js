@@ -11,8 +11,8 @@ var modelingModule = require('bpmn-js/lib/features/modeling').default;
 
 var bpmnCopyPasteModule = require('bpmn-js/lib/features/copy-paste').default;
 
-var camundaDescriptor = require('../../resources/camunda');
-var camundaExtension = require('../../lib');
+var activitiDescriptor = require('../../resources/activiti');
+var activitiExtension = require('../../lib');
 
 
 var diagramXML = require('../fixtures/xml/remove_variable_event.bpmn').default;
@@ -25,10 +25,10 @@ describe('browser - RemoveVariableEventBehaviour', function() {
       coreModule,
       modelingModule,
       bpmnCopyPasteModule,
-      camundaExtension
+      activitiExtension
     ],
     moddleExtensions: {
-      camunda: camundaDescriptor,
+      activiti: activitiDescriptor,
     }
   }));
 
@@ -56,7 +56,7 @@ describe('browser - RemoveVariableEventBehaviour', function() {
         // assume
         eventDefinitions.forEach(def => {
 
-          expect(def.get('camunda:variableEvents')).to.not.be.undefined;
+          expect(def.get('activiti:variableEvents')).to.not.be.undefined;
 
         });
 
@@ -68,7 +68,7 @@ describe('browser - RemoveVariableEventBehaviour', function() {
         // then
         eventDefinitions.forEach(def => {
 
-          expect(def.get('camunda:variableEvents')).to.be.undefined;
+          expect(def.get('activiti:variableEvents')).to.be.undefined;
 
         });
 
@@ -96,7 +96,7 @@ describe('browser - RemoveVariableEventBehaviour', function() {
         // assume
         eventDefinitions.forEach(def => {
 
-          expect(def.get('camunda:variableEvents')).to.not.be.undefined;
+          expect(def.get('activiti:variableEvents')).to.not.be.undefined;
 
         });
 
@@ -106,7 +106,7 @@ describe('browser - RemoveVariableEventBehaviour', function() {
         // then
         eventDefinitions.forEach(def => {
 
-          expect(def.get('camunda:variableEvents')).to.not.be.undefined;
+          expect(def.get('activiti:variableEvents')).to.not.be.undefined;
 
         });
 
@@ -133,7 +133,7 @@ describe('browser - RemoveVariableEventBehaviour', function() {
         // then
         eventBusinessObject.get('eventDefinitions').forEach(def => {
 
-          expect(def.get('camunda:variableEvents')).to.be.undefined;
+          expect(def.get('activiti:variableEvents')).to.be.undefined;
 
         });
 

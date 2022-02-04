@@ -11,8 +11,8 @@ var modelingModule = require('bpmn-js/lib/features/modeling').default;
 
 var bpmnCopyPasteModule = require('bpmn-js/lib/features/copy-paste').default;
 
-var camundaDescriptor = require('../../resources/camunda');
-var camundaExtension = require('../../lib');
+var activitiDescriptor = require('../../resources/activiti');
+var activitiExtension = require('../../lib');
 
 
 var diagramXML = require('../fixtures/xml/remove_initiator.bpmn').default;
@@ -25,10 +25,10 @@ describe('browser - RemoveInitiatorBehaviour', function() {
       coreModule,
       modelingModule,
       bpmnCopyPasteModule,
-      camundaExtension
+      activitiExtension
     ],
     moddleExtensions: {
-      camunda: camundaDescriptor,
+      activiti: activitiDescriptor,
     }
   }));
 
@@ -49,13 +49,13 @@ describe('browser - RemoveInitiatorBehaviour', function() {
         startBusinessObject = getBusinessObject(startEvent);
 
         // assume
-        expect(startBusinessObject.get('camunda:initiator')).to.not.be.undefined;
+        expect(startBusinessObject.get('activiti:initiator')).to.not.be.undefined;
 
         // when
         modeling.moveShape(startEvent, { x: (subProcess.x + subProcess.width / 4), y: (subProcess.y + subProcess.height / 4) }, subProcess);
 
         // then
-        expect(startBusinessObject.get('camunda:initiator')).to.be.undefined;
+        expect(startBusinessObject.get('activiti:initiator')).to.be.undefined;
 
       }));
 
@@ -77,7 +77,7 @@ describe('browser - RemoveInitiatorBehaviour', function() {
         modeling.createShape({ type: 'bpmn:StartEvent', businessObject:startBusinessObject }, { x: 0, y: 0 }, subProcess);
 
         // then
-        expect(startBusinessObject.get('camunda:initiator')).to.be.undefined;
+        expect(startBusinessObject.get('activiti:initiator')).to.be.undefined;
 
       }));
 
@@ -98,13 +98,13 @@ describe('browser - RemoveInitiatorBehaviour', function() {
         startBusinessObject = getBusinessObject(startEvent);
 
         // assume
-        expect(startBusinessObject.get('camunda:initiator')).to.not.be.undefined;
+        expect(startBusinessObject.get('activiti:initiator')).to.not.be.undefined;
 
         // when
         modeling.moveShape(startEvent, { x: (subProcess.x + subProcess.width / 4), y: (subProcess.y + subProcess.height / 4) });
 
         // then
-        expect(startBusinessObject.get('camunda:initiator')).to.be.undefined;
+        expect(startBusinessObject.get('activiti:initiator')).to.be.undefined;
 
       }));
 

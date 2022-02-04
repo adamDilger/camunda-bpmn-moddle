@@ -16,8 +16,8 @@ var modelingModule = require('bpmn-js/lib/features/modeling').default;
 
 var bpmnCopyPasteModule = require('bpmn-js/lib/features/copy-paste').default;
 
-var camundaDescriptor = require('../../resources/camunda');
-var camundaExtension = require('../../lib');
+var activitiDescriptor = require('../../resources/activiti');
+var activitiExtension = require('../../lib');
 
 var collectionRemove = require('diagram-js/lib/util/Collections').remove;
 
@@ -31,17 +31,17 @@ describe('browser - CopyPasteRootElementBehavior', function() {
       coreModule,
       modelingModule,
       bpmnCopyPasteModule,
-      camundaExtension
+      activitiExtension
     ],
     moddleExtensions: {
-      camunda: camundaDescriptor,
+      activiti: activitiDescriptor,
     }
   }));
 
 
   describe('copy/paste external service task', function() {
 
-    describe('without any camunda:ErrorEventDefinition', function() {
+    describe('without any activiti:ErrorEventDefinition', function() {
 
       var copiedServiceTask,
           pastedServiceTask,
@@ -74,7 +74,7 @@ describe('browser - CopyPasteRootElementBehavior', function() {
       }));
 
 
-      it('should not create a camunda:ErrorEventDefinition on paste', function() {
+      it('should not create a activiti:ErrorEventDefinition on paste', function() {
 
         // then
         expect(getErrorEventDefinitions(pastedBusinessObject)).to.be.empty;
@@ -83,7 +83,7 @@ describe('browser - CopyPasteRootElementBehavior', function() {
     });
 
 
-    describe('with one camunda:ErrorEventDefinition', function() {
+    describe('with one activiti:ErrorEventDefinition', function() {
 
       var copiedServiceTask,
           pastedServiceTask,
@@ -287,7 +287,7 @@ describe('browser - CopyPasteRootElementBehavior', function() {
     });
 
 
-    describe('with multiple camunda:ErrorEventDefinition', function() {
+    describe('with multiple activiti:ErrorEventDefinition', function() {
 
       var copiedServiceTask,
           pastedServiceTask,
@@ -645,7 +645,7 @@ describe('browser - CopyPasteRootElementBehavior', function() {
 // helper ///////////////////////
 
 function getErrorEventDefinitions(bo) {
-  return getExtensionElementsOfType(bo, 'camunda:ErrorEventDefinition');
+  return getExtensionElementsOfType(bo, 'activiti:ErrorEventDefinition');
 }
 
 function getExtensionElementsOfType(bo, type) {

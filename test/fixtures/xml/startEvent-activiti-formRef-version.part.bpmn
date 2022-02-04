@@ -1,0 +1,5 @@
+<bpmn:startEvent
+  activiti:formRef="formId"
+  activiti:formRefBinding="version"
+  activiti:formRefVersion="1">
+</bpmn:startEvent>

@@ -12,11 +12,11 @@ module.exports.readFile = readFile;
 
 var BpmnModdle = require('bpmn-moddle');
 
-var camundaDescriptor = require('../resources/camunda');
+var activitiDescriptor = require('../resources/activiti');
 
 function createModdle() {
   return new BpmnModdle({
-    camunda: camundaDescriptor
+    activiti: activitiDescriptor
   });
 }
 

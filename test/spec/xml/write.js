@@ -18,13 +18,13 @@ describe('write', function() {
     it('Field#stringValue', async function() {
 
       // given
-      var fieldElem = moddle.create('camunda:Field', {
+      var fieldElem = moddle.create('activiti:Field', {
         name: 'Field_1',
         stringValue: 'myFieldValue'
       });
 
       var expectedXML =
-        '<camunda:field xmlns:camunda="http://camunda.org/schema/1.0/bpmn" ' +
+        '<activiti:field xmlns:activiti="http://activiti.org/schema/1.0/bpmn" ' +
               'name="Field_1" stringValue="myFieldValue" />';
 
       // when
@@ -38,15 +38,15 @@ describe('write', function() {
     it('Field#string', async function() {
 
       // given
-      var fieldElem = moddle.create('camunda:Field', {
+      var fieldElem = moddle.create('activiti:Field', {
         name: 'Field_1',
         string: 'myStringValue'
       });
 
       var expectedXML =
-        '<camunda:field xmlns:camunda="http://camunda.org/schema/1.0/bpmn" name="Field_1">' +
-          '<camunda:string>myStringValue</camunda:string>' +
-        '</camunda:field>';
+        '<activiti:field xmlns:activiti="http://activiti.org/schema/1.0/bpmn" name="Field_1">' +
+          '<activiti:string>myStringValue</activiti:string>' +
+        '</activiti:field>';
 
       // when
       var { xml } = await write(fieldElem);
@@ -59,15 +59,15 @@ describe('write', function() {
     it('Field#expression', async function() {
 
       // given
-      var fieldElem = moddle.create('camunda:Field', {
+      var fieldElem = moddle.create('activiti:Field', {
         name: 'Field_1',
         expression: '${myExpressionValue}'
       });
 
       var expectedXML =
-        '<camunda:field xmlns:camunda="http://camunda.org/schema/1.0/bpmn" name="Field_1">' +
-          '<camunda:expression>${myExpressionValue}</camunda:expression>' +
-        '</camunda:field>';
+        '<activiti:field xmlns:activiti="http://activiti.org/schema/1.0/bpmn" name="Field_1">' +
+          '<activiti:expression>${myExpressionValue}</activiti:expression>' +
+        '</activiti:field>';
 
       // when
       var { xml } = await write(fieldElem);
@@ -81,13 +81,13 @@ describe('write', function() {
 
       // given
       var element = moddle.create('bpmn:UserTask', {
-        'camunda:formRefBinding': 'latest'
+        'activiti:formRefBinding': 'latest'
       });
 
       var expectedXML =
         '<bpmn:userTask xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" ' +
-                       'xmlns:camunda="http://camunda.org/schema/1.0/bpmn" ' +
-                       'camunda:formRefBinding="latest" />';
+                       'xmlns:activiti="http://activiti.org/schema/1.0/bpmn" ' +
+                       'activiti:formRefBinding="latest" />';
 
       // when
       var { xml } = await write(element);

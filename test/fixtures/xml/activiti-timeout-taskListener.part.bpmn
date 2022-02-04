@@ -1,0 +1,7 @@
+<activiti:taskListener xmlns:activiti="http://activiti.org/schema/1.0/bpmn"
+  event='timeout'
+  id="timeout-friendly">
+    <bpmn:timerEventDefinition>
+      <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT1H</bpmn:timeDuration>
+    </bpmn:timerEventDefinition>
+</activiti:taskListener>

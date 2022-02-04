@@ -1,20 +1,20 @@
-# camunda-bpmn-moddle
+# activiti-bpmn-moddle
 
-[![CI](https://github.com/camunda/camunda-bpmn-moddle/workflows/CI/badge.svg)](https://github.com/camunda/camunda-bpmn-moddle/actions?query=workflow%3ACI)
+[![CI](https://github.com/activiti/activiti-bpmn-moddle/workflows/CI/badge.svg)](https://github.com/activiti/activiti-bpmn-moddle/actions?query=workflow%3ACI)
 
-This project defines the [Camunda](https://camunda.org) namespace extensions for BPMN 2.0 as a [moddle](https://github.com/bpmn-io/moddle) descriptor.
+This project defines the [Activiti](https://activiti.org) namespace extensions for BPMN 2.0 as a [moddle](https://github.com/bpmn-io/moddle) descriptor.
 
 
 ## Usage
 
-Use it together with [bpmn-moddle](https://github.com/bpmn-io/bpmn-moddle) to validate Camunda BPMN 2.0 extensions.
+Use it together with [bpmn-moddle](https://github.com/bpmn-io/bpmn-moddle) to validate Activiti BPMN 2.0 extensions.
 
 ```javascript
 var BpmnModdle = require('bpmn-moddle');
 
-var camundaModdle = require('camunda-bpmn-moddle/resources/camunda');
+var activitiModdle = require('activiti-bpmn-moddle/resources/activiti');
 
-var moddle = new BpmnModdle({ camunda: camundaModdle });
+var moddle = new BpmnModdle({ activiti: activitiModdle });
 
 var serviceTask = moddle.create('bpmn:ServiceTask', {
   'javaDelegate': 'my.company.SomeDelegate'
@@ -40,24 +40,24 @@ npm run all
 
 ## [bpmn-js](https://github.com/bpmn-io/bpmn-js) Extension
 
-We include an extension that makes [bpmn-js](https://github.com/bpmn-io/bpmn-js) Modeler copy and replace mechanisms aware of Camunda properties.
+We include an extension that makes [bpmn-js](https://github.com/bpmn-io/bpmn-js) Modeler copy and replace mechanisms aware of Activiti properties.
 
 ```js
 var BpmnJS = require('bpmn-js/lib/Modeler'),
-    camundaExtensionModule = require('camunda-bpmn-moddle/lib'),
-    camundaModdle = require('camunda-bpmn-moddle/resources/camunda');
+    activitiExtensionModule = require('activiti-bpmn-moddle/lib'),
+    activitiModdle = require('activiti-bpmn-moddle/resources/activiti');
 
 var modeler = new BpmnJS({
     additionalModules: [
-      camundaExtensionModule
+      activitiExtensionModule
     ],
     moddleExtensions: {
-      camunda: camundaModdle
+      activiti: activitiModdle
     }
   });
 ```
 
-This extension hooks into the copy mechanism provided by the BPMN editor and ensures Camunda properties are kept and or dropped on copy and element replace.
+This extension hooks into the copy mechanism provided by the BPMN editor and ensures Activiti properties are kept and or dropped on copy and element replace.
 
 
 ## License

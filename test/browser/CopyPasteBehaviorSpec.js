@@ -4,7 +4,7 @@ var CopyPasteBehavior = require('../../lib/CopyPasteBehavior');
 
 var BpmnModdle = require('bpmn-moddle').default;
 
-var camundaDescriptor = require('../../resources/camunda');
+var activitiDescriptor = require('../../resources/activiti');
 
 
 describe('browser - CopyPasteBehavior', function() {
@@ -16,7 +16,7 @@ describe('browser - CopyPasteBehavior', function() {
     copyPasteBehavior = new CopyPasteBehavior(new EventBusMock());
 
     moddle = new BpmnModdle({
-      camunda: camundaDescriptor
+      activiti: activitiDescriptor
     });
   });
 
@@ -26,7 +26,7 @@ describe('browser - CopyPasteBehavior', function() {
     it('should allow if parent has MessageEventDefinition', function() {
 
       // given
-      var connector = moddle.create('camunda:Connector'),
+      var connector = moddle.create('activiti:Connector'),
           extensionElements = moddle.create('bpmn:ExtensionElements'),
           messageEventDefinition = moddle.create('bpmn:MessageEventDefinition'),
           messageEndEvent = moddle.create('bpmn:EndEvent');
@@ -49,7 +49,7 @@ describe('browser - CopyPasteBehavior', function() {
     it('should NOT allow if parent has no MessageEventDefinition', function() {
 
       // given
-      var connector = moddle.create('camunda:Connector'),
+      var connector = moddle.create('activiti:Connector'),
           extensionElements = moddle.create('bpmn:ExtensionElements'),
           signalEventDefinition = moddle.create('bpmn:SignalEventDefinition'),
           signalEndEvent = moddle.create('bpmn:EndEvent');
@@ -72,7 +72,7 @@ describe('browser - CopyPasteBehavior', function() {
     it('should NOT allow if parent is not IntermediateThrowEvent or EndEvent', function() {
 
       // given
-      var connector = moddle.create('camunda:Connector'),
+      var connector = moddle.create('activiti:Connector'),
           extensionElements = moddle.create('bpmn:ExtensionElements'),
           messageEventDefinition = moddle.create('bpmn:MessageEventDefinition'),
           messageStartEvent = moddle.create('bpmn:StartEvent');
@@ -95,7 +95,7 @@ describe('browser - CopyPasteBehavior', function() {
     it('should allow if parent is ServiceTask', function() {
 
       // given
-      var connector = moddle.create('camunda:Connector'),
+      var connector = moddle.create('activiti:Connector'),
           extensionElements = moddle.create('bpmn:ExtensionElements'),
           serviceTask = moddle.create('bpmn:ServiceTask');
 
@@ -111,12 +111,12 @@ describe('browser - CopyPasteBehavior', function() {
   });
 
 
-  describe('camunda:Field', function() {
+  describe('activiti:Field', function() {
 
     it('should allow if parent has MessageEventDefinition', function() {
 
       // given
-      var field = moddle.create('camunda:Field'),
+      var field = moddle.create('activiti:Field'),
           extensionElements = moddle.create('bpmn:ExtensionElements'),
           messageEventDefinition = moddle.create('bpmn:MessageEventDefinition'),
           messageEndEvent = moddle.create('bpmn:EndEvent');
@@ -139,7 +139,7 @@ describe('browser - CopyPasteBehavior', function() {
     it('should NOT allow if parent has no MessageEventDefinition', function() {
 
       // given
-      var field = moddle.create('camunda:Field'),
+      var field = moddle.create('activiti:Field'),
           extensionElements = moddle.create('bpmn:ExtensionElements'),
           signalEventDefinition = moddle.create('bpmn:SignalEventDefinition'),
           signalEndEvent = moddle.create('bpmn:EndEvent');
@@ -162,7 +162,7 @@ describe('browser - CopyPasteBehavior', function() {
     it('should NOT allow if parent is not IntermediateThrowEvent or EndEvent', function() {
 
       // given
-      var field = moddle.create('camunda:Field'),
+      var field = moddle.create('activiti:Field'),
           extensionElements = moddle.create('bpmn:ExtensionElements'),
           signalEventDefinition = moddle.create('bpmn:SignalEventDefinition'),
           signalStartEvent = moddle.create('bpmn:StartEvent');
@@ -184,13 +184,13 @@ describe('browser - CopyPasteBehavior', function() {
   });
 
 
-  describe('camunda:FailedJobRetryTimeCycle', function() {
+  describe('activiti:FailedJobRetryTimeCycle', function() {
 
     it('should allow if parent is Signal IntermediateThrowEvent',
       function() {
 
         // given
-        var retryCycle = moddle.create('camunda:FailedJobRetryTimeCycle'),
+        var retryCycle = moddle.create('activiti:FailedJobRetryTimeCycle'),
             extensionElements = moddle.create('bpmn:ExtensionElements'),
             signalEventDefinition = moddle.create('bpmn:SignalEventDefinition'),
             signalIntermediateThrowEvent = moddle.create('bpmn:IntermediateThrowEvent');
@@ -215,7 +215,7 @@ describe('browser - CopyPasteBehavior', function() {
       function() {
 
         // given
-        var retryCycle = moddle.create('camunda:FailedJobRetryTimeCycle'),
+        var retryCycle = moddle.create('activiti:FailedJobRetryTimeCycle'),
             extensionElements = moddle.create('bpmn:ExtensionElements'),
             signalEventDefinition = moddle.create('bpmn:SignalEventDefinition'),
             signalStartEvent = moddle.create('bpmn:StartEvent');
@@ -239,7 +239,7 @@ describe('browser - CopyPasteBehavior', function() {
     it('should allow if parent is Timer IntermediateCatchEvent', function() {
 
       // given
-      var retryCycle = moddle.create('camunda:FailedJobRetryTimeCycle'),
+      var retryCycle = moddle.create('activiti:FailedJobRetryTimeCycle'),
           extensionElements = moddle.create('bpmn:ExtensionElements'),
           timerEventDefinition = moddle.create('bpmn:TimerEventDefinition'),
           timerIntermediateCatchEvent = moddle.create('bpmn:IntermediateCatchEvent');
@@ -262,7 +262,7 @@ describe('browser - CopyPasteBehavior', function() {
     it('should allow if parent is Timer EndEvent', function() {
 
       // given
-      var retryCycle = moddle.create('camunda:FailedJobRetryTimeCycle'),
+      var retryCycle = moddle.create('activiti:FailedJobRetryTimeCycle'),
           extensionElements = moddle.create('bpmn:ExtensionElements'),
           timerEventDefinition = moddle.create('bpmn:TimerEventDefinition'),
           timerEndEvent = moddle.create('bpmn:EndEvent');
@@ -286,7 +286,7 @@ describe('browser - CopyPasteBehavior', function() {
       function() {
 
         // given
-        var retryCycle = moddle.create('camunda:FailedJobRetryTimeCycle'),
+        var retryCycle = moddle.create('activiti:FailedJobRetryTimeCycle'),
             extensionElements = moddle.create('bpmn:ExtensionElements'),
             messageEventDefinition = moddle.create('bpmn:MessageEventDefinition'),
             messageIntermediateCatchEvent = moddle.create('bpmn:IntermediateCatchEvent');
@@ -310,7 +310,7 @@ describe('browser - CopyPasteBehavior', function() {
     it('should allow if parent is MultiInstanceLoopCharacteristics', function() {
 
       // given
-      var retryCycle = moddle.create('camunda:FailedJobRetryTimeCycle'),
+      var retryCycle = moddle.create('activiti:FailedJobRetryTimeCycle'),
           extensionElements = moddle.create('bpmn:ExtensionElements'),
           loopCharacteristics = moddle.create('bpmn:MultiInstanceLoopCharacteristics');
 
@@ -328,12 +328,12 @@ describe('browser - CopyPasteBehavior', function() {
   });
 
 
-  describe('camunda:ErrorEventDefinition', function() {
+  describe('activiti:ErrorEventDefinition', function() {
 
     it('should allow if parent is service task', function() {
 
       // given
-      var errorEventDefinition = moddle.create('camunda:ErrorEventDefinition'),
+      var errorEventDefinition = moddle.create('activiti:ErrorEventDefinition'),
           extensionElements = moddle.create('bpmn:ExtensionElements'),
           serviceTask = moddle.create('bpmn:ServiceTask');
 
@@ -352,7 +352,7 @@ describe('browser - CopyPasteBehavior', function() {
     it('should not allow if parent is not a service task', function() {
 
       // given
-      var errorEventDefinition = moddle.create('camunda:ErrorEventDefinition'),
+      var errorEventDefinition = moddle.create('activiti:ErrorEventDefinition'),
           extensionElements = moddle.create('bpmn:ExtensionElements'),
           userTask = moddle.create('bpmn:UserTask');
 
@@ -370,12 +370,12 @@ describe('browser - CopyPasteBehavior', function() {
   });
 
 
-  describe('camunda:TaskListener', function() {
+  describe('activiti:TaskListener', function() {
 
     it('should allow if parent is user task', function() {
 
       // given
-      var taskListener = moddle.create('camunda:TaskListener'),
+      var taskListener = moddle.create('activiti:TaskListener'),
           extensionElements = moddle.create('bpmn:ExtensionElements'),
           userTask = moddle.create('bpmn:UserTask');
 
@@ -394,7 +394,7 @@ describe('browser - CopyPasteBehavior', function() {
     it('should NOT allow if parent is not user task', function() {
 
       // given
-      var taskListener = moddle.create('camunda:TaskListener'),
+      var taskListener = moddle.create('activiti:TaskListener'),
           extensionElements = moddle.create('bpmn:ExtensionElements'),
           serviceTask = moddle.create('bpmn:ServiceTask');
 
@@ -412,12 +412,12 @@ describe('browser - CopyPasteBehavior', function() {
   });
 
 
-  describe('camunda:In', function() {
+  describe('activiti:In', function() {
 
-    it('should allow <camunda:In> on CallActivity', function() {
+    it('should allow <activiti:In> on CallActivity', function() {
 
       // given
-      var inOutBinding = moddle.create('camunda:In'),
+      var inOutBinding = moddle.create('activiti:In'),
           extensionElements = moddle.create('bpmn:ExtensionElements'),
           callActivity = moddle.create('bpmn:CallActivity');
 
@@ -433,10 +433,10 @@ describe('browser - CopyPasteBehavior', function() {
     });
 
 
-    it('should allow <camunda:In> on SignalIntermediateThrowEvent', function() {
+    it('should allow <activiti:In> on SignalIntermediateThrowEvent', function() {
 
       // given
-      var inOutBinding = moddle.create('camunda:In'),
+      var inOutBinding = moddle.create('activiti:In'),
           extensionElements = moddle.create('bpmn:ExtensionElements'),
           signalEventDefinition = moddle.create('bpmn:SignalEventDefinition'),
           intermediateThrowEvent = moddle.create('bpmn:IntermediateThrowEvent');
@@ -457,10 +457,10 @@ describe('browser - CopyPasteBehavior', function() {
     });
 
 
-    it('should allow <camunda:In> on SignalEndEvent', function() {
+    it('should allow <activiti:In> on SignalEndEvent', function() {
 
       // given
-      var inOutBinding = moddle.create('camunda:In'),
+      var inOutBinding = moddle.create('activiti:In'),
           extensionElements = moddle.create('bpmn:ExtensionElements'),
           signalEventDefinition = moddle.create('bpmn:SignalEventDefinition'),
           endEvent = moddle.create('bpmn:EndEvent');
@@ -481,10 +481,10 @@ describe('browser - CopyPasteBehavior', function() {
     });
 
 
-    it('should NOT allow <camunda:In> on SignalStartEvent', function() {
+    it('should NOT allow <activiti:In> on SignalStartEvent', function() {
 
       // given
-      var inOutBinding = moddle.create('camunda:In'),
+      var inOutBinding = moddle.create('activiti:In'),
           extensionElements = moddle.create('bpmn:ExtensionElements'),
           signalEventDefinition = moddle.create('bpmn:SignalEventDefinition'),
           startEvent = moddle.create('bpmn:StartEvent');
@@ -505,10 +505,10 @@ describe('browser - CopyPasteBehavior', function() {
     });
 
 
-    it('should NOT allow <camunda:In> on SignalIntermediateCatchEvent', function() {
+    it('should NOT allow <activiti:In> on SignalIntermediateCatchEvent', function() {
 
       // given
-      var inOutBinding = moddle.create('camunda:In'),
+      var inOutBinding = moddle.create('activiti:In'),
           extensionElements = moddle.create('bpmn:ExtensionElements'),
           signalEventDefinition = moddle.create('bpmn:SignalEventDefinition'),
           intermediateCatchEvent = moddle.create('bpmn:IntermediateCatchEvent');
@@ -529,10 +529,10 @@ describe('browser - CopyPasteBehavior', function() {
     });
 
 
-    it('should NOT allow <camunda:In> on MessageIntermediateThrowEvent', function() {
+    it('should NOT allow <activiti:In> on MessageIntermediateThrowEvent', function() {
 
       // given
-      var inOutBinding = moddle.create('camunda:In'),
+      var inOutBinding = moddle.create('activiti:In'),
           extensionElements = moddle.create('bpmn:ExtensionElements'),
           messageEventDefinition = moddle.create('bpmn:MessageEventDefinition'),
           intermediateCatchEvent = moddle.create('bpmn:IntermediateCatchEvent');
@@ -554,12 +554,12 @@ describe('browser - CopyPasteBehavior', function() {
   });
 
 
-  describe('camunda:InputOutput', function() {
+  describe('activiti:InputOutput', function() {
 
     it('should NOT allow on Gateway', function() {
 
       // given
-      var inputOutput = moddle.create('camunda:InputOutput'),
+      var inputOutput = moddle.create('activiti:InputOutput'),
           extensionElements = moddle.create('bpmn:ExtensionElements'),
           gateway = moddle.create('bpmn:Gateway');
 
@@ -578,7 +578,7 @@ describe('browser - CopyPasteBehavior', function() {
     it('should NOT allow on BoundaryEvent', function() {
 
       // given
-      var inputOutput = moddle.create('camunda:InputOutput'),
+      var inputOutput = moddle.create('activiti:InputOutput'),
           extensionElements = moddle.create('bpmn:ExtensionElements'),
           boundaryEvent = moddle.create('bpmn:BoundaryEvent');
 
@@ -597,7 +597,7 @@ describe('browser - CopyPasteBehavior', function() {
     it('should NOT allow on StartEvent', function() {
 
       // given
-      var inputOutput = moddle.create('camunda:InputOutput'),
+      var inputOutput = moddle.create('activiti:InputOutput'),
           extensionElements = moddle.create('bpmn:ExtensionElements'),
           startEvent = moddle.create('bpmn:StartEvent');
 

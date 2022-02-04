@@ -33,11 +33,11 @@ describe('import -> export roundtrip', function() {
   }
 
 
-  describe('should keep camunda attributes', function() {
+  describe('should keep activiti attributes', function() {
 
-    it('camunda:FormData', validateExport('test/fixtures/xml/userTask-camunda-formData.bpmn'));
+    it('activiti:FormData', validateExport('test/fixtures/xml/userTask-activiti-formData.bpmn'));
 
-    it('camunda:InputOutput', validateExport('test/fixtures/xml/inputOutput-nestedList.bpmn'));
+    it('activiti:InputOutput', validateExport('test/fixtures/xml/inputOutput-nestedList.bpmn'));
 
   });
 
